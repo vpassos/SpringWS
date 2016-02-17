@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://spring.io/guides/gs-producing-web-service"
+	targetNamespace="http://spring.io/guides/gs-producing-web-service"
+	elementFormDefault="qualified">
+	
+	<xs:element name="getPersonRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="getPersonResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="person" type="tns:Person"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="Person">
+		<xs:sequence>
+				<xs:element name="name" type="xs:string"/>
+				<xs:element name="age" type="xs:int"/>
+				<xs:element name="birthDate" type="xs:date"/>
+				<xs:element name="telephone" type="tns:Telephone"/>
+			</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="Telephone">
+		<xs:sequence>
+			<xs:element name="DDI">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="2"/>
+						<xs:maxInclusive value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="DDD">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="2"/>
+						<xs:maxInclusive value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="number">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="9"/>
+						<xs:maxInclusive value="9"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
